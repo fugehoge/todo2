@@ -5,7 +5,7 @@ FROM tomcat:10.0-jdk17-openjdk-slim
 WORKDIR /usr/local/tomcat/webapps/
 
 # アプリケーションのWARファイルをコンテナにコピー
-COPY build/libs/Todo-0.0.1-SNAPSHOT.war ./ROOT.war
+COPY build/libs/Todo-0.0.1-SNAPSHOT-plain.war ./ROOT.war
 
 # ポートの公開
 EXPOSE 8080
