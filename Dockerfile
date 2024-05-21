@@ -1,13 +1,14 @@
 # ベースイメージの指定
-FROM openjdk:17
-# ワーキングディレクトリの設定
-WORKDIR /app
+FROM tomcat:10.0-jdk17-openjdk-slim
 
-# アプリケーションのJARファイルをコンテナにコピー
-COPY build/libs/*.jar app.jar
+# ワーキングディレクトリの設定
+WORKDIR /usr/local/tomcat/webapps/
+
+# アプリケーションのWARファイルをコンテナにコピー
+COPY build/libs/Todo-0.0.1-SNAPSHOT.war ./ROOT.war
 
 # ポートの公開
 EXPOSE 8080
 
-# アプリケーションの実行コマンド
-ENTRYPOINT ["java","-jar","app.jar"]
+# Tomcatサーバーの起動コマンド
+CMD ["catalina.sh", "run"]
